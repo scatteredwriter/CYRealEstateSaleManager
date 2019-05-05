@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C2D01013227424AA00953DF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D01012227424AA00953DF6 /* AppDelegate.m */; };
+		C2D0101B227424AC00953DF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D0101A227424AC00953DF6 /* Assets.xcassets */; };
+		C2D0101E227424AC00953DF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D0101C227424AC00953DF6 /* LaunchScreen.storyboard */; };
+		C2D01021227424AC00953DF6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D01020227424AC00953DF6 /* main.m */; };
+		C2D01029227424C500953DF6 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D01028227424C500953DF6 /* libsqlite3.tbd */; };
+		C2D0102F22742AF700953DF6 /* CYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D0102E22742AF700953DF6 /* CYLoginViewController.m */; };
+		C2D01036227439BE00953DF6 /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D01035227439BE00953DF6 /* DataBaseManager.m */; };
+		C2D0103C227458ED00953DF6 /* CYSaleManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D0103B227458ED00953DF6 /* CYSaleManagerViewController.m */; };
+		C2D0104422745F0000953DF6 /* CYMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D0104322745F0000953DF6 /* CYMainViewController.m */; };
+		C2D010472274612600953DF6 /* CYMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D010462274612600953DF6 /* CYMainTabBarController.m */; };
+		C2F2B19D227EEC3E006DBDEC /* CYStaffManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F2B19C227EEC3E006DBDEC /* CYStaffManageController.m */; };
+		C2F2B1A3227EF2FC006DBDEC /* CYEditStaffViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F2B1A2227EF2FC006DBDEC /* CYEditStaffViewController.m */; };
+		C2F2B1A6227F1D49006DBDEC /* CYMeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F2B1A5227F1D49006DBDEC /* CYMeViewController.m */; };
+		C2FF24CB227DA78E00C5C7C8 /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FF24CA227DA78E00C5C7C8 /* UserManager.m */; };
+		C2FF24CE227DAE8700C5C7C8 /* HouseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FF24CD227DAE8700C5C7C8 /* HouseManager.m */; };
+		C2FF24D1227DD19F00C5C7C8 /* CYEditHouseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FF24D0227DD19F00C5C7C8 /* CYEditHouseViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C2D0100E227424AA00953DF6 /* CYRealEstateSaleManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYRealEstateSaleManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C2D01011227424AA00953DF6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C2D01012227424AA00953DF6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C2D0101A227424AC00953DF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C2D0101D227424AC00953DF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C2D0101F227424AC00953DF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C2D01020227424AC00953DF6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C2D01028227424C500953DF6 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		C2D0102D22742AF700953DF6 /* CYLoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYLoginViewController.h; sourceTree = "<group>"; };
+		C2D0102E22742AF700953DF6 /* CYLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYLoginViewController.m; sourceTree = "<group>"; };
+		C2D01034227439BE00953DF6 /* DataBaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataBaseManager.h; sourceTree = "<group>"; };
+		C2D01035227439BE00953DF6 /* DataBaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataBaseManager.m; sourceTree = "<group>"; };
+		C2D0103A227458EC00953DF6 /* CYSaleManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYSaleManagerViewController.h; sourceTree = "<group>"; };
+		C2D0103B227458ED00953DF6 /* CYSaleManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYSaleManagerViewController.m; sourceTree = "<group>"; };
+		C2D0104222745F0000953DF6 /* CYMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYMainViewController.h; sourceTree = "<group>"; };
+		C2D0104322745F0000953DF6 /* CYMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYMainViewController.m; sourceTree = "<group>"; };
+		C2D010452274612600953DF6 /* CYMainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYMainTabBarController.h; sourceTree = "<group>"; };
+		C2D010462274612600953DF6 /* CYMainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYMainTabBarController.m; sourceTree = "<group>"; };
+		C2F2B19B227EEC3E006DBDEC /* CYStaffManageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYStaffManageController.h; sourceTree = "<group>"; };
+		C2F2B19C227EEC3E006DBDEC /* CYStaffManageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYStaffManageController.m; sourceTree = "<group>"; };
+		C2F2B1A1227EF2FC006DBDEC /* CYEditStaffViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYEditStaffViewController.h; sourceTree = "<group>"; };
+		C2F2B1A2227EF2FC006DBDEC /* CYEditStaffViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYEditStaffViewController.m; sourceTree = "<group>"; };
+		C2F2B1A4227F1D49006DBDEC /* CYMeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYMeViewController.h; sourceTree = "<group>"; };
+		C2F2B1A5227F1D49006DBDEC /* CYMeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYMeViewController.m; sourceTree = "<group>"; };
+		C2FF24C9227DA78E00C5C7C8 /* UserManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
+		C2FF24CA227DA78E00C5C7C8 /* UserManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
+		C2FF24CC227DAE8700C5C7C8 /* HouseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HouseManager.h; sourceTree = "<group>"; };
+		C2FF24CD227DAE8700C5C7C8 /* HouseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HouseManager.m; sourceTree = "<group>"; };
+		C2FF24CF227DD19F00C5C7C8 /* CYEditHouseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYEditHouseViewController.h; sourceTree = "<group>"; };
+		C2FF24D0227DD19F00C5C7C8 /* CYEditHouseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYEditHouseViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C2D0100B227424AA00953DF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D01029227424C500953DF6 /* libsqlite3.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C2D01005227424AA00953DF6 = {
+			isa = PBXGroup;
+			children = (
+				C2D01010227424AA00953DF6 /* CYRealEstateSaleManager */,
+				C2D0100F227424AA00953DF6 /* Products */,
+				C2D01027227424C500953DF6 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		C2D0100F227424AA00953DF6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C2D0100E227424AA00953DF6 /* CYRealEstateSaleManager.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C2D01010227424AA00953DF6 /* CYRealEstateSaleManager */ = {
+			isa = PBXGroup;
+			children = (
+				C2D01037227439C600953DF6 /* Tool */,
+				C2D01030227438BC00953DF6 /* Controller */,
+				C2D01011227424AA00953DF6 /* AppDelegate.h */,
+				C2D01012227424AA00953DF6 /* AppDelegate.m */,
+				C2D0101A227424AC00953DF6 /* Assets.xcassets */,
+				C2D0101C227424AC00953DF6 /* LaunchScreen.storyboard */,
+				C2D0101F227424AC00953DF6 /* Info.plist */,
+				C2D01020227424AC00953DF6 /* main.m */,
+			);
+			path = CYRealEstateSaleManager;
+			sourceTree = "<group>";
+		};
+		C2D01027227424C500953DF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C2D01028227424C500953DF6 /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C2D01030227438BC00953DF6 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C2D0102D22742AF700953DF6 /* CYLoginViewController.h */,
+				C2D0102E22742AF700953DF6 /* CYLoginViewController.m */,
+				C2D0103A227458EC00953DF6 /* CYSaleManagerViewController.h */,
+				C2D0103B227458ED00953DF6 /* CYSaleManagerViewController.m */,
+				C2D0104222745F0000953DF6 /* CYMainViewController.h */,
+				C2D0104322745F0000953DF6 /* CYMainViewController.m */,
+				C2D010452274612600953DF6 /* CYMainTabBarController.h */,
+				C2D010462274612600953DF6 /* CYMainTabBarController.m */,
+				C2FF24CF227DD19F00C5C7C8 /* CYEditHouseViewController.h */,
+				C2FF24D0227DD19F00C5C7C8 /* CYEditHouseViewController.m */,
+				C2F2B19B227EEC3E006DBDEC /* CYStaffManageController.h */,
+				C2F2B19C227EEC3E006DBDEC /* CYStaffManageController.m */,
+				C2F2B1A1227EF2FC006DBDEC /* CYEditStaffViewController.h */,
+				C2F2B1A2227EF2FC006DBDEC /* CYEditStaffViewController.m */,
+				C2F2B1A4227F1D49006DBDEC /* CYMeViewController.h */,
+				C2F2B1A5227F1D49006DBDEC /* CYMeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C2D01037227439C600953DF6 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				C2D01034227439BE00953DF6 /* DataBaseManager.h */,
+				C2D01035227439BE00953DF6 /* DataBaseManager.m */,
+				C2FF24C9227DA78E00C5C7C8 /* UserManager.h */,
+				C2FF24CA227DA78E00C5C7C8 /* UserManager.m */,
+				C2FF24CC227DAE8700C5C7C8 /* HouseManager.h */,
+				C2FF24CD227DAE8700C5C7C8 /* HouseManager.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C2D0100D227424AA00953DF6 /* CYRealEstateSaleManager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C2D01024227424AC00953DF6 /* Build configuration list for PBXNativeTarget "CYRealEstateSaleManager" */;
+			buildPhases = (
+				C2D0100A227424AA00953DF6 /* Sources */,
+				C2D0100B227424AA00953DF6 /* Frameworks */,
+				C2D0100C227424AA00953DF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CYRealEstateSaleManager;
+			productName = CYRealEstateSaleManager;
+			productReference = C2D0100E227424AA00953DF6 /* CYRealEstateSaleManager.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C2D01006227424AA00953DF6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = ChenYing;
+				TargetAttributes = {
+					C2D0100D227424AA00953DF6 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = C2D01009227424AA00953DF6 /* Build configuration list for PBXProject "CYRealEstateSaleManager" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C2D01005227424AA00953DF6;
+			productRefGroup = C2D0100F227424AA00953DF6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C2D0100D227424AA00953DF6 /* CYRealEstateSaleManager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C2D0100C227424AA00953DF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2D0101E227424AC00953DF6 /* LaunchScreen.storyboard in Resources */,
+				C2D0101B227424AC00953DF6 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C2D0100A227424AA00953DF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2FF24CE227DAE8700C5C7C8 /* HouseManager.m in Sources */,
+				C2D01021227424AC00953DF6 /* main.m in Sources */,
+				C2F2B19D227EEC3E006DBDEC /* CYStaffManageController.m in Sources */,
+				C2D0102F22742AF700953DF6 /* CYLoginViewController.m in Sources */,
+				C2FF24D1227DD19F00C5C7C8 /* CYEditHouseViewController.m in Sources */,
+				C2FF24CB227DA78E00C5C7C8 /* UserManager.m in Sources */,
+				C2F2B1A6227F1D49006DBDEC /* CYMeViewController.m in Sources */,
+				C2D0103C227458ED00953DF6 /* CYSaleManagerViewController.m in Sources */,
+				C2F2B1A3227EF2FC006DBDEC /* CYEditStaffViewController.m in Sources */,
+				C2D01013227424AA00953DF6 /* AppDelegate.m in Sources */,
+				C2D01036227439BE00953DF6 /* DataBaseManager.m in Sources */,
+				C2D010472274612600953DF6 /* CYMainTabBarController.m in Sources */,
+				C2D0104422745F0000953DF6 /* CYMainViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C2D0101C227424AC00953DF6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C2D0101D227424AC00953DF6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C2D01022227424AC00953DF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C2D01023227424AC00953DF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C2D01025227424AC00953DF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 27Y22RY4ZZ;
+				INFOPLIST_FILE = CYRealEstateSaleManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.chenying.CYRealEstateSaleManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C2D01026227424AC00953DF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 27Y22RY4ZZ;
+				INFOPLIST_FILE = CYRealEstateSaleManager/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.chenying.CYRealEstateSaleManager;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C2D01009227424AA00953DF6 /* Build configuration list for PBXProject "CYRealEstateSaleManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2D01022227424AC00953DF6 /* Debug */,
+				C2D01023227424AC00953DF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C2D01024227424AC00953DF6 /* Build configuration list for PBXNativeTarget "CYRealEstateSaleManager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C2D01025227424AC00953DF6 /* Debug */,
+				C2D01026227424AC00953DF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C2D01006227424AA00953DF6 /* Project object */;
+}
