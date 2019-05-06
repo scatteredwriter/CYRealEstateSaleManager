@@ -16,21 +16,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    CYSaleManagerViewController *saleManagerViewController = [[CYSaleManagerViewController alloc] init];
-    saleManagerViewController.tabBarItem.title = @"销售";
-    saleManagerViewController.tabBarItem.image = [UIImage imageNamed:@"home"];
     
-    CYStaffManageController *staffManageController = [[CYStaffManageController alloc] init];
-    staffManageController.tabBarItem.title = @"员工";
-    staffManageController.tabBarItem.image = [UIImage imageNamed:@"user_group_man_woman"];
+    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:10];
+    
+    if ([UserManager sharedUserManager].loginUser.department == UserDepartmentSale || [UserManager sharedUserManager].loginUser.department == UserDepartmentAdmin) {
+        CYSaleManagerViewController *saleManagerViewController = [[CYSaleManagerViewController alloc] init];
+        saleManagerViewController.tabBarItem.title = @"销售";
+        saleManagerViewController.tabBarItem.image = [UIImage imageNamed:@"home"];
+        [viewControllers addObject:[[UINavigationController alloc] initWithRootViewController:saleManagerViewController]];
+    }
+    
+    if ([UserManager sharedUserManager].loginUser.department == UserDepartmentAccount || [UserManager sharedUserManager].loginUser.department == UserDepartmentAdmin) {
+        CYFinanceManagerController *financeManagerController = [[CYFinanceManagerController alloc] init];
+        financeManagerController.tabBarItem.title = @"财务";
+        financeManagerController.tabBarItem.image = [UIImage imageNamed:@"list"];
+        [viewControllers addObject:[[UINavigationController alloc] initWithRootViewController:financeManagerController]];
+    }
+    
+    if ([UserManager sharedUserManager].loginUser.department == UserDepartmentHr || [UserManager sharedUserManager].loginUser.department == UserDepartmentAdmin) {
+        CYStaffManageController *staffManageController = [[CYStaffManageController alloc] init];
+        staffManageController.tabBarItem.title = @"员工";
+        staffManageController.tabBarItem.image = [UIImage imageNamed:@"user_group_man_woman"];
+        [viewControllers addObject:[[UINavigationController alloc] initWithRootViewController:staffManageController]];
+    }
     
     CYMeViewController *meController = [[CYMeViewController alloc] init];
     meController.tabBarItem.title = @"我的";
     meController.tabBarItem.image = [UIImage imageNamed:@"user_male"];
+    [viewControllers addObject:[[UINavigationController alloc] initWithRootViewController:meController]];
     
-    self.viewControllers = @[[[UINavigationController alloc] initWithRootViewController:saleManagerViewController],
-                             [[UINavigationController alloc] initWithRootViewController:staffManageController],
-                             [[UINavigationController alloc] initWithRootViewController:meController]];
+    self.viewControllers = viewControllers;
 }
 
 @end

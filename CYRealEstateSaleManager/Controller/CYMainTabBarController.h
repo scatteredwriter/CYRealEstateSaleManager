@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CYSaleManagerViewController.h"
 #import "CYStaffManageController.h"
+#import "CYFinanceManagerController.h"
 #import "CYMeViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN

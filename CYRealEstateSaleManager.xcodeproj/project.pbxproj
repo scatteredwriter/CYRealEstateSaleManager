@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2CEF3D72280171B00B612CD /* CYFinanceManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CEF3D62280171B00B612CD /* CYFinanceManagerController.m */; };
+		C2CEF3DA22801A0E00B612CD /* FinanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CEF3D922801A0E00B612CD /* FinanceManager.m */; };
+		C2CEF3DD2280361A00B612CD /* CYEditExpanseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CEF3DC2280361A00B612CD /* CYEditExpanseViewController.m */; };
 		C2D01013227424AA00953DF6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D01012227424AA00953DF6 /* AppDelegate.m */; };
 		C2D0101B227424AC00953DF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C2D0101A227424AC00953DF6 /* Assets.xcassets */; };
 		C2D0101E227424AC00953DF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C2D0101C227424AC00953DF6 /* LaunchScreen.storyboard */; };
@@ -26,6 +29,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C2CEF3D52280171B00B612CD /* CYFinanceManagerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYFinanceManagerController.h; sourceTree = "<group>"; };
+		C2CEF3D62280171B00B612CD /* CYFinanceManagerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYFinanceManagerController.m; sourceTree = "<group>"; };
+		C2CEF3D822801A0E00B612CD /* FinanceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinanceManager.h; sourceTree = "<group>"; };
+		C2CEF3D922801A0E00B612CD /* FinanceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FinanceManager.m; sourceTree = "<group>"; };
+		C2CEF3DB2280361900B612CD /* CYEditExpanseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYEditExpanseViewController.h; sourceTree = "<group>"; };
+		C2CEF3DC2280361A00B612CD /* CYEditExpanseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYEditExpanseViewController.m; sourceTree = "<group>"; };
 		C2D0100E227424AA00953DF6 /* CYRealEstateSaleManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CYRealEstateSaleManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C2D01011227424AA00953DF6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C2D01012227424AA00953DF6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -129,6 +138,10 @@
 				C2F2B1A2227EF2FC006DBDEC /* CYEditStaffViewController.m */,
 				C2F2B1A4227F1D49006DBDEC /* CYMeViewController.h */,
 				C2F2B1A5227F1D49006DBDEC /* CYMeViewController.m */,
+				C2CEF3D52280171B00B612CD /* CYFinanceManagerController.h */,
+				C2CEF3D62280171B00B612CD /* CYFinanceManagerController.m */,
+				C2CEF3DB2280361900B612CD /* CYEditExpanseViewController.h */,
+				C2CEF3DC2280361A00B612CD /* CYEditExpanseViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -142,6 +155,8 @@
 				C2FF24CA227DA78E00C5C7C8 /* UserManager.m */,
 				C2FF24CC227DAE8700C5C7C8 /* HouseManager.h */,
 				C2FF24CD227DAE8700C5C7C8 /* HouseManager.m */,
+				C2CEF3D822801A0E00B612CD /* FinanceManager.h */,
+				C2CEF3D922801A0E00B612CD /* FinanceManager.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -215,17 +230,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2CEF3D72280171B00B612CD /* CYFinanceManagerController.m in Sources */,
 				C2FF24CE227DAE8700C5C7C8 /* HouseManager.m in Sources */,
 				C2D01021227424AC00953DF6 /* main.m in Sources */,
 				C2F2B19D227EEC3E006DBDEC /* CYStaffManageController.m in Sources */,
 				C2D0102F22742AF700953DF6 /* CYLoginViewController.m in Sources */,
 				C2FF24D1227DD19F00C5C7C8 /* CYEditHouseViewController.m in Sources */,
 				C2FF24CB227DA78E00C5C7C8 /* UserManager.m in Sources */,
+				C2CEF3DA22801A0E00B612CD /* FinanceManager.m in Sources */,
 				C2F2B1A6227F1D49006DBDEC /* CYMeViewController.m in Sources */,
 				C2D0103C227458ED00953DF6 /* CYSaleManagerViewController.m in Sources */,
 				C2F2B1A3227EF2FC006DBDEC /* CYEditStaffViewController.m in Sources */,
 				C2D01013227424AA00953DF6 /* AppDelegate.m in Sources */,
 				C2D01036227439BE00953DF6 /* DataBaseManager.m in Sources */,
+				C2CEF3DD2280361A00B612CD /* CYEditExpanseViewController.m in Sources */,
 				C2D010472274612600953DF6 /* CYMainTabBarController.m in Sources */,
 				C2D0104422745F0000953DF6 /* CYMainViewController.m in Sources */,
 			);

@@ -53,6 +53,7 @@ typedef enum {
 @interface UserManager : DataBaseManager
 @property (nonatomic, strong, readonly) UserItem *loginUser;
 + (UserManager *)sharedUserManager;
+- (UserItem *)selectUserId:(int64_t)Id;
 - (UserItem *)selectUserId:(int64_t)Id withPassword:(NSString *)password withRet:(int *)ret;
 - (UserManagerStatusCode)updatePassword:(NSString *)password byId:(int64_t)Id;
 - (UserManagerStatusCode)insertUser:(UserItem *)user;

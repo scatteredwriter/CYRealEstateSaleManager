@@ -54,6 +54,44 @@ static UserManager *_sharedUserManager;
     sqlite3_close(db);
 }
 
+// 查询用户
+- (UserItem *)selectUserId:(int64_t)Id {
+    // 打开数据库
+    if (sqlite3_open([self.dbFilePath UTF8String], &db) != SQLITE_OK) {
+        NSLog(@"数据库打开失败");
+        return nil;
+    }
+    // 查询用户
+    const char *select_user_sql = "select * from User where Id=?";
+    sqlite3_stmt *statement;
+    // 对sql预处理
+    if (sqlite3_prepare_v2(db, select_user_sql, -1, &statement, NULL) == SQLITE_OK) {
+        // 绑定参数
+        sqlite3_bind_int64(statement, 1, Id);
+        // 执行sql
+        if (sqlite3_step(statement) == SQLITE_ROW) {
+            NSLog(@"查询到用户(Id: %lld)", Id);
+            UserItem *item = [[UserItem alloc] init];
+            item.Id = sqlite3_column_int64(statement, 0);
+            item.name = [[NSString alloc] initWithUTF8String:((const char *)sqlite3_column_text(statement, 1))];
+            item.department = (UserDepartment)sqlite3_column_int(statement, 2);
+            item.job = (UserJob)sqlite3_column_int(statement, 3);
+            item.phone = sqlite3_column_int64(statement, 4);
+            sqlite3_finalize(statement);
+            sqlite3_close(db);
+            return item;
+        } else {
+            NSLog(@"没有查询到用户");
+            sqlite3_finalize(statement);
+            sqlite3_close(db);
+            return nil;
+        }
+    }
+    sqlite3_finalize(statement);
+    sqlite3_close(db);
+    return nil;
+}
+
 // 通过密码查询用户
 - (UserItem *)selectUserId:(int64_t)Id withPassword:(NSString *)password withRet:(int *)ret {
     // 打开数据库
