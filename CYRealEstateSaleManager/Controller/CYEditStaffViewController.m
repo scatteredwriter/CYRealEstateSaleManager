@@ -24,7 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"添加员工信息";
+    self.title = self.editStaff ? @"编辑员工信息" : @"添加员工信息";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonClickHandler)];
     
@@ -75,13 +75,6 @@
     [self.scrollView addSubview:self.phoneField];
     
     [self p_initUserInfo];
-}
-
-- (void)setEditStaff:(UserItem *)editStaff {
-    if (!editStaff)
-        return;
-    _editStaff = editStaff;
-    self.title = @"编辑房屋信息";
 }
 
 - (void)p_initUserInfo {
@@ -136,6 +129,13 @@
         self.editStaffBlock(item);
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField == self.phoneField && textField.text.length == 11) {
+        [textField resignFirstResponder];
+    }
+    return YES;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

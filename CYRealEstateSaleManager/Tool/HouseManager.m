@@ -153,7 +153,7 @@ static HouseManager *_sharedHouseManager;
         NSLog(@"数据库打开失败");
         return HouseManagerStatusCodeError;
     }
-    // 插入房屋数据
+    // 更新房屋数据
     const char *update_house_sql = "update House set Address=?,HuXing=?,Area=?,Price=?,Status=?,OrderIdCard=? where Id=?";
     sqlite3_stmt *statement;
     if (sqlite3_prepare_v2(db, update_house_sql, -1, &statement, NULL) == SQLITE_OK) {
@@ -190,7 +190,7 @@ static HouseManager *_sharedHouseManager;
         NSLog(@"数据库打开失败");
         return nil;
     }
-    // 插入房屋数据
+    // 搜索房屋数据
     NSString *search_houses_sql = [[NSString alloc] initWithFormat:@"select * from House where Address like '%%%@%%'", address];
     sqlite3_stmt *statement;
     if (sqlite3_prepare_v2(db, [search_houses_sql UTF8String], -1, &statement, NULL) == SQLITE_OK) {
@@ -256,7 +256,7 @@ static HouseManager *_sharedHouseManager;
         NSLog(@"数据库打开失败");
         return HouseManagerStatusCodeError;
     }
-    // 插入房屋数据
+    // 插入订房用户数据
     const char *insert_customer_sql = "insert into Customer values(?,?,?)";
     sqlite3_stmt *statement;
     if (sqlite3_prepare_v2(db, insert_customer_sql, -1, &statement, NULL) == SQLITE_OK) {
@@ -286,7 +286,7 @@ static HouseManager *_sharedHouseManager;
         NSLog(@"数据库打开失败");
         return nil;
     }
-    // 查询所有房屋
+    // 查询订房用户数据
     const char *select_customer_sql = "select * from Customer where IdCard=?";
     sqlite3_stmt *statement;
     // 对sql预处理
@@ -319,7 +319,11 @@ static HouseManager *_sharedHouseManager;
         NSLog(@"数据库打开失败");
         return HouseManagerStatusCodeError;
     }
-    // 插入房屋数据
+    if (![self selectCustomerByIdCard:customer.idCard]) {
+        // 没有该订房用户信息，插入该订房用户
+        return [self insertCustomer:customer];
+    }
+    // 插入订房用户数据
     const char *update_house_sql = "update Customer set Name=?,Phone=? where IdCard=?";
     sqlite3_stmt *statement;
     if (sqlite3_prepare_v2(db, update_house_sql, -1, &statement, NULL) == SQLITE_OK) {
@@ -350,7 +354,7 @@ static HouseManager *_sharedHouseManager;
         NSLog(@"数据库打开失败");
         return HouseManagerStatusCodeError;
     }
-    // 删除房屋数据
+    // 删除订房用户数据
     const char *delete_customer_sql = "delete from Customer where IdCard=?";
     sqlite3_stmt *statement;
     if (sqlite3_prepare_v2(db, delete_customer_sql, -1, &statement, NULL) == SQLITE_OK) {

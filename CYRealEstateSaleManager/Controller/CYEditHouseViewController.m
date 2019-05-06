@@ -28,7 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.title = @"添加房屋信息";
+    self.title = self.editHouse ? @"编辑房屋信息" : @"添加房屋信息";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonClickHandler)];
     
@@ -109,26 +109,13 @@
     self.orderIdCardField = [[UITextField alloc] init];
     self.orderIdCardField.placeholder = @"请输入预定用户身份证号";
     self.orderIdCardField.font = [UIFont systemFontOfSize:17];
+    [self.orderIdCardField setKeyboardType:UIKeyboardTypeASCIICapable];
     self.orderIdCardField.borderStyle = UITextBorderStyleRoundedRect;
     self.orderIdCardField.returnKeyType = UIReturnKeyDone;
     self.orderIdCardField.delegate = self;
     [self.scrollView addSubview:self.orderIdCardField];
     
     [self p_initHouseInfo];
-}
-
-- (void)setEditHouse:(HouseItem *)editHouse {
-    if (!editHouse)
-        return;
-    _editHouse = editHouse;
-    self.title = @"编辑房屋信息";
-}
-
-- (void)setEditCustomer:(CustomerItem *)editCustomer {
-    if (!editCustomer)
-        return;
-    _editCustomer = editCustomer;
-    self.title = @"编辑房屋信息";
 }
 
 - (void)p_initHouseInfo {
@@ -163,8 +150,22 @@
 
 - (void)doneButtonClickHandler {
     BOOL isHouseInfoComplete = self.addressField.text.length && self.huXingField.text.length && self.areaField.text.length && self.priceField.text.length;
-    BOOL isOrderInfoComplete = ((!self.orderNameField.text.length && !self.orderPhoneField.text.length && !self.orderIdCardField.text.length) || (self.orderNameField.text.length && self.orderPhoneField.text.length && self.orderIdCardField.text.length));
-    if (!isHouseInfoComplete || !isOrderInfoComplete) {
+    BOOL isOrderInfoComplete = self.orderNameField.text.length && self.orderPhoneField.text.length && self.orderIdCardField.text.length;
+    if (self.statusSegmentControl.selectedSegmentIndex != HouseStatusWaitForSaled && !isOrderInfoComplete) {
+        // 房屋状态不是待售出并且没有补充完成预定用户信息
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"操作失败" message:@"请补充完成预定用户信息" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+        return;
+    } else if (self.statusSegmentControl.selectedSegmentIndex == HouseStatusWaitForSaled && (self.orderNameField.text.length || self.orderPhoneField.text.length || self.orderIdCardField.text.length)) {
+        // 房屋状态是待售出并且补充完成了预定用户信息
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"操作失败" message:@"请更改房屋状态至已预定或已售出" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:okAction];
+        [self presentViewController:alertController animated:YES completion:nil];
+        return;
+    } else if (!isHouseInfoComplete) {
         // 信息没有输入完全
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"操作失败" message:@"请补充完成剩余信息" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
@@ -206,35 +207,16 @@
     }
 }
 
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField == self.orderPhoneField && textField.text.length == 11) {
+        [textField resignFirstResponder];
+    } else if (textField == self.orderIdCardField && textField.text.length == 18) {
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-//    if (textField == self.addressField) {
-//        [self.addressField resignFirstResponder];
-//        [self.huXingField becomeFirstResponder];
-//    }
-//    else if (textField == self.huXingField) {
-//        [self.huXingField resignFirstResponder];
-//        [self.areaField becomeFirstResponder];
-//    }
-//    else if (textField == self.areaField) {
-//        [self.areaField resignFirstResponder];
-//        [self.priceField becomeFirstResponder];
-//    }
-//    else if (textField == self.priceField) {
-//        [self.priceField resignFirstResponder];
-//        [self.orderNameField becomeFirstResponder];
-//    }
-//    else if (textField == self.orderNameField) {
-//        [self.orderNameField resignFirstResponder];
-//        [self.orderPhoneField becomeFirstResponder];
-//    }
-//    else if (textField == self.orderPhoneField) {
-//        [self.orderPhoneField resignFirstResponder];
-//        [self.orderIdCardField becomeFirstResponder];
-//    }
-//    else if (textField == self.orderIdCardField) {
-//        [self.orderIdCardField resignFirstResponder];
-//        [self doneButtonClickHandler];
-//    }
     [textField resignFirstResponder];
     return YES;
 }

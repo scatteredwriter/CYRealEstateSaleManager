@@ -62,7 +62,7 @@ static UserManager *_sharedUserManager;
         *ret = UserManagerStatusCodeOtherError;
         return nil;
     }
-    // 查询用户
+    // 查询用户密码
     const char *select_password_sql = "select * from User where Id=?";
     sqlite3_stmt *statement;
     // 对sql预处理
@@ -149,7 +149,7 @@ static UserManager *_sharedUserManager;
         NSLog(@"数据库打开失败");
         return UserManagerStatusCodeOtherError;
     }
-    // 查询超级管理员账号
+    // 查询管理员账号
     const char *select_admin_sql = "select * from User where Job=?";
     sqlite3_stmt *statement;
     // 对sql预处理
