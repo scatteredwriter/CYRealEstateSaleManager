@@ -20,7 +20,7 @@
     NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:10];
     
     if ([UserManager sharedUserManager].loginUser.department == UserDepartmentSale || [UserManager sharedUserManager].loginUser.department == UserDepartmentAdmin) {
-        CYSaleManagerViewController *saleManagerViewController = [[CYSaleManagerViewController alloc] init];
+        CYHouseManagerController *saleManagerViewController = [[CYHouseManagerController alloc] init];
         saleManagerViewController.tabBarItem.title = @"销售";
         saleManagerViewController.tabBarItem.image = [UIImage imageNamed:@"home"];
         [viewControllers addObject:[[UINavigationController alloc] initWithRootViewController:saleManagerViewController]];

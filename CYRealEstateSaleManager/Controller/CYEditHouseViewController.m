@@ -80,7 +80,8 @@
     
     NSArray *segmentItems = @[HOUSE_STATUS_WAIT_FOR_SALED, HOUSE_STATUS_ORDERED, HOUSE_STATUS_SALED];
     self.statusSegmentControl = [[UISegmentedControl alloc] initWithItems:segmentItems];
-    self.statusSegmentControl.selectedSegmentIndex = 0;
+    [self.statusSegmentControl addTarget:self action:@selector(segmentControlValueChange) forControlEvents:UIControlEventValueChanged];
+    self.statusSegmentControl.selectedSegmentIndex = HouseStatusWaitForSaled;
     [self.scrollView addSubview:self.statusSegmentControl];
     
     self.orderInfoTipLabel = [[UILabel alloc] init];
@@ -125,6 +126,15 @@
         self.areaField.text = [[NSString alloc] initWithFormat:@"%.2f", self.editHouse.area];
         self.priceField.text = [[NSString alloc] initWithFormat:@"%.2f", self.editHouse.price];
         self.statusSegmentControl.selectedSegmentIndex = self.editHouse.status;
+        if (self.statusSegmentControl.selectedSegmentIndex == HouseStatusWaitForSaled) {
+            self.orderNameField.enabled = NO;
+            self.orderPhoneField.enabled = NO;
+            self.orderIdCardField.enabled = NO;
+        }
+    } else {
+        self.orderNameField.enabled = NO;
+        self.orderPhoneField.enabled = NO;
+        self.orderIdCardField.enabled = NO;
     }
     if (self.editCustomer) {
         self.orderNameField.text = self.editCustomer.name;
@@ -146,6 +156,18 @@
     self.orderPhoneField.frame = CGRectMake(15, CGRectGetMaxY(self.orderNameField.frame) + 10, CGRectGetWidth(self.view.frame) - 15 * 2, 40);
     self.orderIdCardField.frame = CGRectMake(15, CGRectGetMaxY(self.orderPhoneField.frame) + 10, CGRectGetWidth(self.view.frame) - 15 * 2, 40);
     self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.frame), CGRectGetMaxY(self.orderIdCardField.frame) + 10);
+}
+
+- (void)segmentControlValueChange {
+    if (self.statusSegmentControl.selectedSegmentIndex == HouseStatusWaitForSaled) {
+        self.orderNameField.enabled = NO;
+        self.orderPhoneField.enabled = NO;
+        self.orderIdCardField.enabled = NO;
+    } else {
+        self.orderNameField.enabled = YES;
+        self.orderPhoneField.enabled = YES;
+        self.orderIdCardField.enabled = YES;
+    }
 }
 
 - (void)doneButtonClickHandler {
@@ -191,7 +213,7 @@
             NSLog(@"面积或价格输入非法!");
         }
         CustomerItem *customer = nil;
-        if (isOrderInfoComplete && self.orderNameField.text.length) {
+        if (isOrderInfoComplete && self.statusSegmentControl.selectedSegmentIndex != HouseStatusWaitForSaled) {
             customer = [[CustomerItem alloc] init];
             customer.name = self.orderNameField.text;
             customer.phone = 0;

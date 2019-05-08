@@ -1,5 +1,5 @@
 //
-//  CYSaleManagerViewController.h
+//  CYHouseManagerController.h
 //  CYRealEstateSaleManager
 //
 //  Created by rod on 4/27/19.
@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface CYSaleManagerViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+@interface CYHouseManagerController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
 @end
 

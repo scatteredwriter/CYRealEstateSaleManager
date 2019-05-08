@@ -1,12 +1,12 @@
 //
-//  CYSaleManagerViewController.m
+//  CYHouseManagerController.m
 //  CYRealEstateSaleManager
 //
 //  Created by rod on 4/27/19.
 //  Copyright © 2019 ChenYing. All rights reserved.
 //
 
-#import "CYSaleManagerViewController.h"
+#import "CYHouseManagerController.h"
 
 // 房屋销售列表Cell声明及实现
 @interface HouseTableViewCell : UITableViewCell
@@ -103,7 +103,7 @@
 
 @end
 
-@interface CYSaleManagerViewController ()
+@interface CYHouseManagerController ()
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (nonatomic, strong) UITableView *houseTableView;
 @property (nonatomic, strong) NSMutableArray *houseArray;
@@ -111,7 +111,7 @@
 @property (nonatomic, assign) BOOL isEdit;
 @end
 
-@implementation CYSaleManagerViewController
+@implementation CYHouseManagerController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

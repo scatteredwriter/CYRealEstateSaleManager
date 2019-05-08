@@ -10,6 +10,7 @@
 #import "UserManager.h"
 
 @interface CYLoginViewController ()
+@property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UITextField *accountTextField;
 @property (nonatomic, strong) UITextField *passwordTextField;
 @property (nonatomic, strong) UIButton *button;
@@ -22,6 +23,13 @@
     // Do any additional setup after loading the view.
     
     self.title = @"账号登录";
+    
+    // 初始化titleLable
+    self.titleLabel = [[UILabel alloc] init];
+    self.titleLabel.text = @"房地产销售销售管理系统";
+    self.titleLabel.font = [UIFont systemFontOfSize:20];
+    [self.view addSubview:self.titleLabel];
+    
     // 初始化accountTextField
     self.accountTextField = [[UITextField alloc] init];
     self.accountTextField.delegate = self;
@@ -53,6 +61,8 @@
 
 // 设置控件布局
 - (void)viewWillLayoutSubviews {
+    [self.titleLabel sizeToFit];
+    self.titleLabel.frame = CGRectMake((CGRectGetWidth(self.view.frame) - CGRectGetWidth(self.titleLabel.frame)) / 2, 85, CGRectGetWidth(self.titleLabel.frame), CGRectGetHeight(self.titleLabel.frame));
     self.accountTextField.frame = CGRectMake(15, 250, (CGRectGetWidth(self.view.frame) - 15 * 2), 40);
     self.passwordTextField.frame = CGRectMake(15, CGRectGetMaxY(self.accountTextField.frame) + 15, (CGRectGetWidth(self.view.frame) - 15 * 2), 40);
     self.button.frame = CGRectMake(15, CGRectGetMaxY(self.passwordTextField.frame) + 30, (CGRectGetWidth(self.view.frame) - 15 * 2), 60);

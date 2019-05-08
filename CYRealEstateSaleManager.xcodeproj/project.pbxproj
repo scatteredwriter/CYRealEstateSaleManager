@@ -17,7 +17,7 @@
 		C2D01029227424C500953DF6 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C2D01028227424C500953DF6 /* libsqlite3.tbd */; };
 		C2D0102F22742AF700953DF6 /* CYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D0102E22742AF700953DF6 /* CYLoginViewController.m */; };
 		C2D01036227439BE00953DF6 /* DataBaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D01035227439BE00953DF6 /* DataBaseManager.m */; };
-		C2D0103C227458ED00953DF6 /* CYSaleManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D0103B227458ED00953DF6 /* CYSaleManagerViewController.m */; };
+		C2D0103C227458ED00953DF6 /* CYHouseManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D0103B227458ED00953DF6 /* CYHouseManagerController.m */; };
 		C2D0104422745F0000953DF6 /* CYMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D0104322745F0000953DF6 /* CYMainViewController.m */; };
 		C2D010472274612600953DF6 /* CYMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2D010462274612600953DF6 /* CYMainTabBarController.m */; };
 		C2F2B19D227EEC3E006DBDEC /* CYStaffManageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F2B19C227EEC3E006DBDEC /* CYStaffManageController.m */; };
@@ -47,8 +47,8 @@
 		C2D0102E22742AF700953DF6 /* CYLoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYLoginViewController.m; sourceTree = "<group>"; };
 		C2D01034227439BE00953DF6 /* DataBaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataBaseManager.h; sourceTree = "<group>"; };
 		C2D01035227439BE00953DF6 /* DataBaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataBaseManager.m; sourceTree = "<group>"; };
-		C2D0103A227458EC00953DF6 /* CYSaleManagerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYSaleManagerViewController.h; sourceTree = "<group>"; };
-		C2D0103B227458ED00953DF6 /* CYSaleManagerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYSaleManagerViewController.m; sourceTree = "<group>"; };
+		C2D0103A227458EC00953DF6 /* CYHouseManagerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYHouseManagerController.h; sourceTree = "<group>"; };
+		C2D0103B227458ED00953DF6 /* CYHouseManagerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYHouseManagerController.m; sourceTree = "<group>"; };
 		C2D0104222745F0000953DF6 /* CYMainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYMainViewController.h; sourceTree = "<group>"; };
 		C2D0104322745F0000953DF6 /* CYMainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYMainViewController.m; sourceTree = "<group>"; };
 		C2D010452274612600953DF6 /* CYMainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYMainTabBarController.h; sourceTree = "<group>"; };
@@ -124,8 +124,8 @@
 			children = (
 				C2D0102D22742AF700953DF6 /* CYLoginViewController.h */,
 				C2D0102E22742AF700953DF6 /* CYLoginViewController.m */,
-				C2D0103A227458EC00953DF6 /* CYSaleManagerViewController.h */,
-				C2D0103B227458ED00953DF6 /* CYSaleManagerViewController.m */,
+				C2D0103A227458EC00953DF6 /* CYHouseManagerController.h */,
+				C2D0103B227458ED00953DF6 /* CYHouseManagerController.m */,
 				C2D0104222745F0000953DF6 /* CYMainViewController.h */,
 				C2D0104322745F0000953DF6 /* CYMainViewController.m */,
 				C2D010452274612600953DF6 /* CYMainTabBarController.h */,
@@ -239,7 +239,7 @@
 				C2FF24CB227DA78E00C5C7C8 /* UserManager.m in Sources */,
 				C2CEF3DA22801A0E00B612CD /* FinanceManager.m in Sources */,
 				C2F2B1A6227F1D49006DBDEC /* CYMeViewController.m in Sources */,
-				C2D0103C227458ED00953DF6 /* CYSaleManagerViewController.m in Sources */,
+				C2D0103C227458ED00953DF6 /* CYHouseManagerController.m in Sources */,
 				C2F2B1A3227EF2FC006DBDEC /* CYEditStaffViewController.m in Sources */,
 				C2D01013227424AA00953DF6 /* AppDelegate.m in Sources */,
 				C2D01036227439BE00953DF6 /* DataBaseManager.m in Sources */,

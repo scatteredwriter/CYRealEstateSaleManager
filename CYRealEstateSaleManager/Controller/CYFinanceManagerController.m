@@ -196,12 +196,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonClickHandler)];
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    
     self.segmentControl = [[UISegmentedControl alloc] initWithItems:@[@"收入明细", @"支出明细"]];
     [self.segmentControl addTarget:self action:@selector(segmentControlValueChange) forControlEvents:UIControlEventValueChanged];
     self.segmentControl.selectedSegmentIndex = 0;
     self.navigationItem.titleView = self.segmentControl;
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonClickHandler)];
     
     self.incomeTableView = [[UITableView alloc] init];
     self.incomeTableView.allowsSelection = NO;
@@ -221,20 +222,24 @@
     [self.view addSubview:self.expanseTableView];
     
     self.totalIncomeLabel = [[UILabel alloc] init];
-//    self.totalIncomeLabel.textColor = [UIColor greenColor];
     self.totalIncomeLabel.font = [UIFont systemFontOfSize:20];
     self.headerView1 = [[UIView alloc] init];
     [self.headerView1 addSubview:self.totalIncomeLabel];
     self.incomeTableView.tableHeaderView = self.headerView1;
     
     self.totalExpanseLabel = [[UILabel alloc] init];
-//    self.totalExpanseLabel.textColor = [UIColor redColor];
     self.totalExpanseLabel.hidden = YES;
     self.totalExpanseLabel.font = [UIFont systemFontOfSize:20];
     self.headerView2 = [[UIView alloc] init];
     [self.headerView2 addSubview:self.totalExpanseLabel];
     self.expanseTableView.tableHeaderView = self.headerView2;
     
+    [self p_initData];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self p_initData];
 }
 
@@ -262,12 +267,14 @@
             self.totalIncomeLabel.hidden = NO;
             self.expanseTableView.hidden = YES;
             self.totalExpanseLabel.hidden = YES;
+            self.navigationItem.rightBarButtonItem.enabled = NO;
             break;
         case 1:
             self.expanseTableView.hidden = NO;
             self.totalExpanseLabel.hidden = NO;
             self.totalIncomeLabel.hidden = YES;
             self.incomeTableView.hidden = YES;
+            self.navigationItem.rightBarButtonItem.enabled = YES;
             break;
     }
 }

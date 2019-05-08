@@ -48,14 +48,14 @@ static FinanceManager *_sharedFinanceManager;
         NSLog(@"数据库打开失败");
         return;
     }
-    const char *create_house_table_sql = "create table if not exists Expanse (\
+    const char *create_expanse_table_sql = "create table if not exists Expanse (\
     Id INTEGER PRIMARY KEY AUTOINCREMENT,\
     Amount REAL,\
     StaffId INTEGER,\
     TargetStaffId INTEGER,\
     Date TEXT,\
     Type INTEGER);";
-    if (sqlite3_exec(db, create_house_table_sql, NULL, NULL, NULL) == SQLITE_OK) {
+    if (sqlite3_exec(db, create_expanse_table_sql, NULL, NULL, NULL) == SQLITE_OK) {
         NSLog(@"创建数据库表Expanse成功");
     } else {
         NSLog(@"创建数据库表Expanse失败");
@@ -69,10 +69,10 @@ static FinanceManager *_sharedFinanceManager;
         return nil;
     }
     // 查询所有收入信息
-    const char *select_all_houses_sql = "select h.Status,h.Price,h.Address,c.Name from House as h inner join Customer as c on h.OrderIdCard=c.IdCard where (h.Status=1 or h.Status=2)";
+    const char *select_all_incomes_sql = "select h.Status,h.Price,h.Address,c.Name from House as h inner join Customer as c on h.OrderIdCard=c.IdCard where (h.Status=1 or h.Status=2)";
     sqlite3_stmt *statement;
     // 对sql预处理
-    if (sqlite3_prepare_v2(db, select_all_houses_sql, -1, &statement, NULL) == SQLITE_OK) {
+    if (sqlite3_prepare_v2(db, select_all_incomes_sql, -1, &statement, NULL) == SQLITE_OK) {
         NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:10];
         // 执行sql
         while (sqlite3_step(statement) == SQLITE_ROW) {
@@ -99,7 +99,7 @@ static FinanceManager *_sharedFinanceManager;
         NSLog(@"数据库打开失败");
         return 0.0;
     }
-    // 查询所有收入信息
+    // 查询总收入
     const char *select_total_incomes_sql = "select Status,Price from House where (Status=1 or Status=2)";
     sqlite3_stmt *statement;
     // 对sql预处理
@@ -125,7 +125,7 @@ static FinanceManager *_sharedFinanceManager;
         NSLog(@"数据库打开失败");
         return 0.0;
     }
-    // 查询所有支出
+    // 查询总支出
     const char *select_total_expanses_sql = "select Amount from Expanse";
     sqlite3_stmt *statement;
     // 对sql预处理
