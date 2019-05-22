@@ -62,7 +62,7 @@
 // 设置控件布局
 - (void)viewWillLayoutSubviews {
     [self.titleLabel sizeToFit];
-    self.titleLabel.frame = CGRectMake((CGRectGetWidth(self.view.frame) - CGRectGetWidth(self.titleLabel.frame)) / 2, 85, CGRectGetWidth(self.titleLabel.frame), CGRectGetHeight(self.titleLabel.frame));
+    self.titleLabel.frame = CGRectMake((CGRectGetWidth(self.view.frame) - CGRectGetWidth(self.titleLabel.frame)) / 2, 130, CGRectGetWidth(self.titleLabel.frame), CGRectGetHeight(self.titleLabel.frame));
     self.accountTextField.frame = CGRectMake(15, 250, (CGRectGetWidth(self.view.frame) - 15 * 2), 40);
     self.passwordTextField.frame = CGRectMake(15, CGRectGetMaxY(self.accountTextField.frame) + 15, (CGRectGetWidth(self.view.frame) - 15 * 2), 40);
     self.button.frame = CGRectMake(15, CGRectGetMaxY(self.passwordTextField.frame) + 30, (CGRectGetWidth(self.view.frame) - 15 * 2), 60);

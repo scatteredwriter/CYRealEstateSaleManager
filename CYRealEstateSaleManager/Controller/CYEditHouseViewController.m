@@ -85,13 +85,13 @@
     [self.scrollView addSubview:self.statusSegmentControl];
     
     self.orderInfoTipLabel = [[UILabel alloc] init];
-    self.orderInfoTipLabel.text = @"预定用户信息(可选)";
+    self.orderInfoTipLabel.text = @"订购用户信息(可选)";
     self.orderInfoTipLabel.font = [UIFont systemFontOfSize:20];
     [self.orderInfoTipLabel sizeToFit];
     [self.scrollView addSubview:self.orderInfoTipLabel];
     
     self.orderNameField = [[UITextField alloc] init];
-    self.orderNameField.placeholder = @"请输入预定用户名";
+    self.orderNameField.placeholder = @"请输入订购用户名";
     self.orderNameField.font = [UIFont systemFontOfSize:17];
     self.orderNameField.borderStyle = UITextBorderStyleRoundedRect;
     self.orderNameField.returnKeyType = UIReturnKeyDone;
@@ -99,7 +99,7 @@
     [self.scrollView addSubview:self.orderNameField];
     
     self.orderPhoneField = [[UITextField alloc] init];
-    self.orderPhoneField.placeholder = @"请输入预定用户手机号";
+    self.orderPhoneField.placeholder = @"请输入订购用户手机号";
     self.orderPhoneField.font = [UIFont systemFontOfSize:17];
     [self.orderPhoneField setKeyboardType:UIKeyboardTypeNumberPad];
     self.orderPhoneField.borderStyle = UITextBorderStyleRoundedRect;
@@ -108,7 +108,7 @@
     [self.scrollView addSubview:self.orderPhoneField];
     
     self.orderIdCardField = [[UITextField alloc] init];
-    self.orderIdCardField.placeholder = @"请输入预定用户身份证号";
+    self.orderIdCardField.placeholder = @"请输入订购用户身份证号";
     self.orderIdCardField.font = [UIFont systemFontOfSize:17];
     [self.orderIdCardField setKeyboardType:UIKeyboardTypeASCIICapable];
     self.orderIdCardField.borderStyle = UITextBorderStyleRoundedRect;
@@ -174,14 +174,14 @@
     BOOL isHouseInfoComplete = self.addressField.text.length && self.huXingField.text.length && self.areaField.text.length && self.priceField.text.length;
     BOOL isOrderInfoComplete = self.orderNameField.text.length && self.orderPhoneField.text.length && self.orderIdCardField.text.length;
     if (self.statusSegmentControl.selectedSegmentIndex != HouseStatusWaitForSaled && !isOrderInfoComplete) {
-        // 房屋状态不是待售出并且没有补充完成预定用户信息
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"操作失败" message:@"请补充完成预定用户信息" preferredStyle:UIAlertControllerStyleAlert];
+        // 房屋状态不是待售出并且没有补充完成订购用户信息
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"操作失败" message:@"请补充完成订购用户信息" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:okAction];
         [self presentViewController:alertController animated:YES completion:nil];
         return;
     } else if (self.statusSegmentControl.selectedSegmentIndex == HouseStatusWaitForSaled && (self.orderNameField.text.length || self.orderPhoneField.text.length || self.orderIdCardField.text.length)) {
-        // 房屋状态是待售出并且补充完成了预定用户信息
+        // 房屋状态是待售出并且补充完成了订购用户信息
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"操作失败" message:@"请更改房屋状态至已预定或已售出" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil];
         [alertController addAction:okAction];
@@ -222,7 +222,7 @@
             @try {
                 customer.phone = [self.orderPhoneField.text intValue];
             } @catch (NSException *exception) {
-                NSLog(@"预定用户手机号输入非法!");
+                NSLog(@"订购用户手机号输入非法!");
             }
         }
         self.editHouseBlock(item, customer);
