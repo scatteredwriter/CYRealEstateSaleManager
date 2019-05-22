@@ -50,7 +50,8 @@ static HouseManager *_sharedHouseManager;
     Area REAL,\
     Price REAL,\
     Status INTEGER,\
-    OrderIdCard TEXT);";
+    OrderIdCard TEXT,\
+    SaledStaffId INTEGER);";
     if (sqlite3_exec(db, create_house_table_sql, NULL, NULL, NULL) == SQLITE_OK) {
         NSLog(@"创建数据库表House成功");
     } else {
@@ -97,6 +98,7 @@ static HouseManager *_sharedHouseManager;
             item.price = sqlite3_column_double(statement, 4);
             item.status = sqlite3_column_int(statement, 5);
             item.orderIdCard = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(statement, 6)];
+            item.saledStaffId = sqlite3_column_int64(statement, 7);
             
             [array addObject:item];
         }
@@ -118,7 +120,7 @@ static HouseManager *_sharedHouseManager;
         return HouseManagerStatusCodeError;
     }
     // 插入房屋数据
-    const char *insert_house_sql = "insert into House (Address,HuXing,Area,Price,Status,OrderIdCard) values(?,?,?,?,?,?)";
+    const char *insert_house_sql = "insert into House (Address,HuXing,Area,Price,Status,OrderIdCard,SaledStaffId) values(?,?,?,?,?,?,?)";
     sqlite3_stmt *statement;
     if (sqlite3_prepare_v2(db, insert_house_sql, -1, &statement, NULL) == SQLITE_OK) {
         // 绑定参数
@@ -128,6 +130,7 @@ static HouseManager *_sharedHouseManager;
         sqlite3_bind_double(statement, 4, house.price); // 价格
         sqlite3_bind_int(statement, 5, house.status); // 状态
         sqlite3_bind_text(statement, 6, [house.orderIdCard UTF8String], -1, NULL); // 订房用户的身份证号
+        sqlite3_bind_int64(statement, 7, house.saledStaffId); // 销售员工的工号
         if (sqlite3_step(statement) == SQLITE_DONE) {
             NSLog(@"房屋(地址: %@)插入成功", house.address);
             sqlite3_finalize(statement);
@@ -154,7 +157,7 @@ static HouseManager *_sharedHouseManager;
         return HouseManagerStatusCodeError;
     }
     // 更新房屋数据
-    const char *update_house_sql = "update House set Address=?,HuXing=?,Area=?,Price=?,Status=?,OrderIdCard=? where Id=?";
+    const char *update_house_sql = "update House set Address=?,HuXing=?,Area=?,Price=?,Status=?,OrderIdCard=?,SaledStaffId=? where Id=?";
     sqlite3_stmt *statement;
     if (sqlite3_prepare_v2(db, update_house_sql, -1, &statement, NULL) == SQLITE_OK) {
         // 绑定参数
@@ -164,7 +167,8 @@ static HouseManager *_sharedHouseManager;
         sqlite3_bind_double(statement, 4, house.price); // 价格
         sqlite3_bind_int(statement, 5, house.status); // 状态
         sqlite3_bind_text(statement, 6, [house.orderIdCard UTF8String], -1, NULL); // 订房用户的身份证号
-        sqlite3_bind_int(statement, 7, house.Id); // Id
+        sqlite3_bind_int64(statement, 7, house.saledStaffId); // 销售员工的工号
+        sqlite3_bind_int(statement, 8, house.Id); // Id
         if (sqlite3_step(statement) == SQLITE_DONE) {
             NSLog(@"房屋(地址: %@)更新成功", house.address);
             sqlite3_finalize(statement);
@@ -375,6 +379,58 @@ static HouseManager *_sharedHouseManager;
     sqlite3_finalize(statement);
     sqlite3_close(db);
     return HouseManagerStatusCodeError;
+}
+
+- (int)getSaledHousesCountByStaffId:(int64_t)staffId {
+    if (sqlite3_open([self.dbFilePath UTF8String], &db) != SQLITE_OK) {
+        NSLog(@"数据库打开失败");
+        return 0;
+    }
+    // 查询销售房屋数
+    const char *select_saled_house_count_sql = "select count(*) from House where SaledStaffId=?";
+    sqlite3_stmt *statement;
+    // 对sql预处理
+    if (sqlite3_prepare_v2(db, select_saled_house_count_sql, -1, &statement, NULL) == SQLITE_OK) {
+        sqlite3_bind_int64(statement, 1, staffId); // 员工工号
+        // 执行sql
+        if (sqlite3_step(statement) == SQLITE_ROW) {
+            int count = sqlite3_column_int(statement, 0);
+            NSLog(@"查找到销售人员(工号: %lld)的销售房屋套数为: %d", staffId, count);
+            sqlite3_finalize(statement);
+            sqlite3_close(db);
+            return count;
+        } else {
+            NSLog(@"没有找到订房用户");
+        }
+    }
+    sqlite3_finalize(statement);
+    sqlite3_close(db);
+    return 0;
+}
+
+- (Float64)getSalesCommissionByStaffId:(int64_t)staffId {
+    if (sqlite3_open([self.dbFilePath UTF8String], &db) != SQLITE_OK) {
+        NSLog(@"数据库打开失败");
+        return 0;
+    }
+    // 查询销售房屋数
+    const char *select_saled_house_count_sql = "select Price from House where SaledStaffId=?";
+    sqlite3_stmt *statement;
+    // 对sql预处理
+    if (sqlite3_prepare_v2(db, select_saled_house_count_sql, -1, &statement, NULL) == SQLITE_OK) {
+        sqlite3_bind_int64(statement, 1, staffId); // 员工工号
+        // 执行sql
+        Float64 commission = 0.0;
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            commission += (sqlite3_column_double(statement, 0) * 5 / 1000);
+        }
+        sqlite3_finalize(statement);
+        sqlite3_close(db);
+        return commission;
+    }
+    sqlite3_finalize(statement);
+    sqlite3_close(db);
+    return 0;
 }
 
 @end

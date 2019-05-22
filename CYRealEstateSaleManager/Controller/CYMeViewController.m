@@ -17,6 +17,8 @@
 @property (nonatomic, strong) UISegmentedControl *deprSegmentControl;
 @property (nonatomic, strong) UISegmentedControl *jobSegmentControl;
 @property (nonatomic, strong) UILabel *phoneField;
+@property (nonatomic, strong) UILabel *saledHousesCountLabel;
+@property (nonatomic, strong) UILabel *salesCommissionLabel;
 @property (nonatomic, strong) UILabel *passwordInfoLabel;
 @property (nonatomic, strong) UITextField *oldPasswordTextField;
 @property (nonatomic, strong) UITextField *passwordTextField;
@@ -78,6 +80,16 @@
     self.phoneField.font = [UIFont systemFontOfSize:17];
     [self.scrollView addSubview:self.phoneField];
     
+    self.saledHousesCountLabel = [[UILabel alloc] init];
+    self.saledHousesCountLabel.enabled = NO;
+    self.saledHousesCountLabel.font = [UIFont systemFontOfSize:17];
+    [self.scrollView addSubview:self.saledHousesCountLabel];
+    
+    self.salesCommissionLabel = [[UILabel alloc] init];
+    self.salesCommissionLabel.enabled = NO;
+    self.salesCommissionLabel.font = [UIFont systemFontOfSize:17];
+    [self.scrollView addSubview:self.salesCommissionLabel];
+    
     self.passwordInfoLabel = [[UILabel alloc] init];
     self.passwordInfoLabel.text = @"更改密码";
     self.passwordInfoLabel.font = [UIFont systemFontOfSize:20];
@@ -134,7 +146,25 @@
         self.deprSegmentControl.selectedSegmentIndex = self.user.department;
         self.jobSegmentControl.selectedSegmentIndex = self.user.job;
         self.phoneField.text = [[NSString alloc] initWithFormat:@"联系方式: %lld", self.user.phone];
+        if (self.user.job == UserJobSaler) {
+            self.saledHousesCountLabel.text = [[NSString alloc] initWithFormat:@"销售房屋套数: %d套", [[HouseManager sharedHouseManager] getSaledHousesCountByStaffId:self.user.Id]];
+            [self.saledHousesCountLabel sizeToFit];
+            self.salesCommissionLabel.text = [[NSString alloc] initWithFormat:@"销售房屋提成: %.2lf万", [[HouseManager sharedHouseManager] getSalesCommissionByStaffId:self.user.Id]];
+            [self.salesCommissionLabel sizeToFit];
+        }
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.user.job == UserJobSaler && self.saledHousesCountLabel && self.salesCommissionLabel) {
+        self.saledHousesCountLabel.text = [[NSString alloc] initWithFormat:@"销售房屋套数: %d套", [[HouseManager sharedHouseManager] getSaledHousesCountByStaffId:self.user.Id]];
+        [self.saledHousesCountLabel sizeToFit];
+        self.salesCommissionLabel.text = [[NSString alloc] initWithFormat:@"销售房屋提成: %.2lf万", [[HouseManager sharedHouseManager] getSalesCommissionByStaffId:self.user.Id]];
+        [self.salesCommissionLabel sizeToFit];
+    }
+    [self viewWillLayoutSubviews];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -148,7 +178,9 @@
     self.jobSegmentControl.frame = CGRectMake(15, CGRectGetMaxY(self.deprSegmentControl.frame) + 10, CGRectGetWidth(self.view.frame) - 15 * 2, 30);
     [self.phoneField sizeToFit];
     self.phoneField.frame = CGRectMake(15, CGRectGetMaxY(self.jobSegmentControl.frame) + 10, CGRectGetWidth(self.phoneField.frame), CGRectGetHeight(self.phoneField.frame));
-    self.passwordInfoLabel.frame = CGRectMake(15, CGRectGetMaxY(self.phoneField.frame) + 50, CGRectGetWidth(self.passwordInfoLabel.frame), CGRectGetHeight(self.passwordInfoLabel.frame));
+    self.saledHousesCountLabel.frame = CGRectMake(15, CGRectGetMaxY(self.phoneField.frame) + 10, CGRectGetWidth(self.saledHousesCountLabel.frame), CGRectGetHeight(self.saledHousesCountLabel.frame));
+    self.salesCommissionLabel.frame = CGRectMake(15, CGRectGetMaxY(self.saledHousesCountLabel.frame) + 10, CGRectGetWidth(self.salesCommissionLabel.frame), CGRectGetHeight(self.salesCommissionLabel.frame));
+    self.passwordInfoLabel.frame = CGRectMake(15, CGRectGetMaxY(self.salesCommissionLabel.frame) + 50, CGRectGetWidth(self.passwordInfoLabel.frame), CGRectGetHeight(self.passwordInfoLabel.frame));
     self.oldPasswordTextField.frame = CGRectMake(15, CGRectGetMaxY(self.passwordInfoLabel.frame) + 20, CGRectGetWidth(self.view.frame) - 15 * 2, 40);
     self.passwordTextField.frame = CGRectMake(15, CGRectGetMaxY(self.oldPasswordTextField.frame) + 10, CGRectGetWidth(self.view.frame) - 15 * 2, 40);
     self.changePasswordButton.frame = CGRectMake(15, CGRectGetMaxY(self.passwordTextField.frame) + 30, CGRectGetWidth(self.view.frame) - 15 * 2, 60);

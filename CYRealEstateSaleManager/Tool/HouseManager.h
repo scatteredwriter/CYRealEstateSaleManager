@@ -28,6 +28,7 @@ typedef enum {
 @property (nonatomic, assign) Float64 price;
 @property (nonatomic, assign) HouseStatus status;
 @property (nonatomic, strong) NSString *orderIdCard;
+@property (nonatomic, assign) int64_t saledStaffId;
 @end
 
 @interface CustomerItem : NSObject
@@ -48,10 +49,14 @@ typedef enum {
 - (HouseManagerStatusCode)updateHouse:(HouseItem *)house;
 - (NSMutableArray *)searchHouseByAddress:(NSString *)address;
 - (HouseManagerStatusCode)deleteHouseById:(int)Id;
+
 - (HouseManagerStatusCode)insertCustomer:(CustomerItem *)customer;
 - (CustomerItem *)selectCustomerByIdCard:(NSString *)idCard;
 - (HouseManagerStatusCode)updateCustomer:(CustomerItem *)customer;
 - (HouseManagerStatusCode)deleteCustomerByIdCard:(NSString *)idCard;
+
+- (int)getSaledHousesCountByStaffId:(int64_t)staffId;
+- (Float64)getSalesCommissionByStaffId:(int64_t)staffId;
 @end
 
 NS_ASSUME_NONNULL_END

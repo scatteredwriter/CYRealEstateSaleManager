@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HouseManager.h"
+#import "UserManager.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

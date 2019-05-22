@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UserManager.h"
+#import "HouseManager.h"
 #import "CYMainViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
