@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "CYHouseManagerController.h"
+#import "CYSalesPerformanceViewController.h"
 #import "CYStaffManageController.h"
 #import "CYFinanceManagerController.h"
 #import "CYMeViewController.h"

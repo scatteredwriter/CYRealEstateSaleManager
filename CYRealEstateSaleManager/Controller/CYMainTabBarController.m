@@ -24,6 +24,12 @@
         saleManagerViewController.tabBarItem.title = @"销售";
         saleManagerViewController.tabBarItem.image = [UIImage imageNamed:@"home"];
         [viewControllers addObject:[[UINavigationController alloc] initWithRootViewController:saleManagerViewController]];
+        if ([UserManager sharedUserManager].loginUser.department == UserDepartmentSale) {
+            CYSalesPerformanceViewController *salesPerformanceViewController = [[CYSalesPerformanceViewController alloc] init];
+            salesPerformanceViewController.tabBarItem.title = @"业绩";
+            salesPerformanceViewController.tabBarItem.image = [UIImage imageNamed:@"combo_chart"];
+            [viewControllers addObject:[[UINavigationController alloc] initWithRootViewController:salesPerformanceViewController]];
+        }
     }
     
     if ([UserManager sharedUserManager].loginUser.department == UserDepartmentAccount || [UserManager sharedUserManager].loginUser.department == UserDepartmentAdmin) {

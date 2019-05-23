@@ -55,8 +55,9 @@ typedef enum {
 - (HouseManagerStatusCode)updateCustomer:(CustomerItem *)customer;
 - (HouseManagerStatusCode)deleteCustomerByIdCard:(NSString *)idCard;
 
+- (NSMutableArray *)getAllSalesHousesByStaffId:(int64_t)staffId;
 - (int)getSaledHousesCountByStaffId:(int64_t)staffId;
-- (Float64)getSalesCommissionByStaffId:(int64_t)staffId;
+- (Float64)getTotalSalesCommissionByStaffId:(int64_t)staffId;
 @end
 
 NS_ASSUME_NONNULL_END

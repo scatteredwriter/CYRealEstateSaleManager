@@ -206,7 +206,11 @@
         item.area = 0;
         item.price = 0;
         item.status = (HouseStatus)self.statusSegmentControl.selectedSegmentIndex;
-        item.saledStaffId = [UserManager sharedUserManager].loginUser.Id;
+        if (item.status == HouseStatusSaled) {
+            item.saledStaffId = [UserManager sharedUserManager].loginUser.Id;
+        } else {
+            item.saledStaffId = 0;
+        }
         @try {
             item.area = [self.areaField.text doubleValue];
             item.price = [self.priceField.text doubleValue];

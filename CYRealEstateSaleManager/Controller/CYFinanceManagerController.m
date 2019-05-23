@@ -222,6 +222,7 @@
     [self.view addSubview:self.expanseTableView];
     
     self.totalIncomeLabel = [[UILabel alloc] init];
+    self.totalIncomeLabel.textAlignment = NSTextAlignmentCenter;
     self.totalIncomeLabel.font = [UIFont systemFontOfSize:20];
     self.headerView1 = [[UIView alloc] init];
     [self.headerView1 addSubview:self.totalIncomeLabel];
@@ -229,6 +230,7 @@
     
     self.totalExpanseLabel = [[UILabel alloc] init];
     self.totalExpanseLabel.hidden = YES;
+    self.totalExpanseLabel.textAlignment = NSTextAlignmentCenter;
     self.totalExpanseLabel.font = [UIFont systemFontOfSize:20];
     self.headerView2 = [[UIView alloc] init];
     [self.headerView2 addSubview:self.totalExpanseLabel];
@@ -250,13 +252,9 @@
     Float64 _totalExpanses = [[FinanceManager sharedFinanceManager] getTotalExpanses];
     self.totalExpanseLabel.text = [[NSString alloc] initWithFormat:@"总支出: %.2f万", _totalExpanses];
     self.incomeArray = [[FinanceManager sharedFinanceManager] getAllIncomes];
-    if (self.incomeArray && self.incomeArray.count) {
-        [self.incomeTableView reloadData];
-    }
+    [self.incomeTableView reloadData];
     self.expanseArray = [[FinanceManager sharedFinanceManager] getAllExpanses];
-    if (self.expanseArray && self.expanseArray.count) {
-        [self.expanseTableView reloadData];
-    }
+    [self.expanseTableView reloadData];
 }
 
 - (void)segmentControlValueChange {
@@ -294,11 +292,11 @@
 
 - (void)viewWillLayoutSubviews {
     [self.totalIncomeLabel sizeToFit];
-    self.totalIncomeLabel.frame = CGRectMake((CGRectGetWidth(self.view.frame) - CGRectGetWidth(self.totalIncomeLabel.frame)) / 2, 15, CGRectGetWidth(self.totalIncomeLabel.frame), CGRectGetHeight(self.totalIncomeLabel.frame));
+    self.totalIncomeLabel.frame = CGRectMake(15, 15, CGRectGetWidth(self.view.frame) - 15 * 2, CGRectGetHeight(self.totalIncomeLabel.frame));
     self.headerView1.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 15 + CGRectGetHeight(self.totalIncomeLabel.frame));
     
     [self.totalExpanseLabel sizeToFit];
-    self.totalExpanseLabel.frame = CGRectMake((CGRectGetWidth(self.view.frame) - CGRectGetWidth(self.totalExpanseLabel.frame)) / 2, 15, CGRectGetWidth(self.totalExpanseLabel.frame), CGRectGetHeight(self.totalExpanseLabel.frame));
+    self.totalExpanseLabel.frame = CGRectMake(15, 15, CGRectGetWidth(self.view.frame) - 15 * 2, CGRectGetHeight(self.totalExpanseLabel.frame));
     self.headerView2.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 15 + CGRectGetHeight(self.totalExpanseLabel.frame));
     
     self.incomeTableView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), CGRectGetHeight(self.view.frame));

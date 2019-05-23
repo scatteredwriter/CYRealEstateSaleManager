@@ -149,7 +149,7 @@
         if (self.user.job == UserJobSaler) {
             self.saledHousesCountLabel.text = [[NSString alloc] initWithFormat:@"销售房屋套数: %d套", [[HouseManager sharedHouseManager] getSaledHousesCountByStaffId:self.user.Id]];
             [self.saledHousesCountLabel sizeToFit];
-            self.salesCommissionLabel.text = [[NSString alloc] initWithFormat:@"销售房屋提成: %.2lf万", [[HouseManager sharedHouseManager] getSalesCommissionByStaffId:self.user.Id]];
+            self.salesCommissionLabel.text = [[NSString alloc] initWithFormat:@"销售房屋提成: %.2lf万", [[HouseManager sharedHouseManager] getTotalSalesCommissionByStaffId:self.user.Id]];
             [self.salesCommissionLabel sizeToFit];
         }
     }
@@ -161,7 +161,7 @@
     if (self.user.job == UserJobSaler && self.saledHousesCountLabel && self.salesCommissionLabel) {
         self.saledHousesCountLabel.text = [[NSString alloc] initWithFormat:@"销售房屋套数: %d套", [[HouseManager sharedHouseManager] getSaledHousesCountByStaffId:self.user.Id]];
         [self.saledHousesCountLabel sizeToFit];
-        self.salesCommissionLabel.text = [[NSString alloc] initWithFormat:@"销售房屋提成: %.2lf万", [[HouseManager sharedHouseManager] getSalesCommissionByStaffId:self.user.Id]];
+        self.salesCommissionLabel.text = [[NSString alloc] initWithFormat:@"销售房屋提成: %.2lf万", [[HouseManager sharedHouseManager] getTotalSalesCommissionByStaffId:self.user.Id]];
         [self.salesCommissionLabel sizeToFit];
     }
     [self viewWillLayoutSubviews];

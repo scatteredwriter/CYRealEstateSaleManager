@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C270089922967DFB0022B2A7 /* CYSalesPerformanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C270089822967DFB0022B2A7 /* CYSalesPerformanceViewController.m */; };
 		C2CEF3D72280171B00B612CD /* CYFinanceManagerController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CEF3D62280171B00B612CD /* CYFinanceManagerController.m */; };
 		C2CEF3DA22801A0E00B612CD /* FinanceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CEF3D922801A0E00B612CD /* FinanceManager.m */; };
 		C2CEF3DD2280361A00B612CD /* CYEditExpanseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2CEF3DC2280361A00B612CD /* CYEditExpanseViewController.m */; };
@@ -29,6 +30,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C270089722967DFB0022B2A7 /* CYSalesPerformanceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYSalesPerformanceViewController.h; sourceTree = "<group>"; };
+		C270089822967DFB0022B2A7 /* CYSalesPerformanceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYSalesPerformanceViewController.m; sourceTree = "<group>"; };
 		C2CEF3D52280171B00B612CD /* CYFinanceManagerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CYFinanceManagerController.h; sourceTree = "<group>"; };
 		C2CEF3D62280171B00B612CD /* CYFinanceManagerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CYFinanceManagerController.m; sourceTree = "<group>"; };
 		C2CEF3D822801A0E00B612CD /* FinanceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FinanceManager.h; sourceTree = "<group>"; };
@@ -142,6 +145,8 @@
 				C2CEF3D62280171B00B612CD /* CYFinanceManagerController.m */,
 				C2CEF3DB2280361900B612CD /* CYEditExpanseViewController.h */,
 				C2CEF3DC2280361A00B612CD /* CYEditExpanseViewController.m */,
+				C270089722967DFB0022B2A7 /* CYSalesPerformanceViewController.h */,
+				C270089822967DFB0022B2A7 /* CYSalesPerformanceViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -235,6 +240,7 @@
 				C2D01021227424AC00953DF6 /* main.m in Sources */,
 				C2F2B19D227EEC3E006DBDEC /* CYStaffManageController.m in Sources */,
 				C2D0102F22742AF700953DF6 /* CYLoginViewController.m in Sources */,
+				C270089922967DFB0022B2A7 /* CYSalesPerformanceViewController.m in Sources */,
 				C2FF24D1227DD19F00C5C7C8 /* CYEditHouseViewController.m in Sources */,
 				C2FF24CB227DA78E00C5C7C8 /* UserManager.m in Sources */,
 				C2CEF3DA22801A0E00B612CD /* FinanceManager.m in Sources */,

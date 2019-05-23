@@ -381,6 +381,41 @@ static HouseManager *_sharedHouseManager;
     return HouseManagerStatusCodeError;
 }
 
+- (NSMutableArray *)getAllSalesHousesByStaffId:(int64_t)staffId {
+    if (sqlite3_open([self.dbFilePath UTF8String], &db) != SQLITE_OK) {
+        NSLog(@"数据库打开失败");
+        return nil;
+    }
+    // 查询所有房屋
+    const char *select_all_houses_sql = "select * from House where SaledStaffId=?";
+    sqlite3_stmt *statement;
+    // 对sql预处理
+    if (sqlite3_prepare_v2(db, select_all_houses_sql, -1, &statement, NULL) == SQLITE_OK) {
+        sqlite3_bind_int64(statement, 1, staffId); // 销售员工工号
+        NSMutableArray *array = [[NSMutableArray alloc] initWithCapacity:10];
+        // 执行sql
+        while (sqlite3_step(statement) == SQLITE_ROW) {
+            HouseItem *item = [[HouseItem alloc] init];
+            item.Id = sqlite3_column_int(statement, 0);
+            item.address = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(statement, 1)];
+            item.huXing = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(statement, 2)];
+            item.area = sqlite3_column_double(statement, 3);
+            item.price = sqlite3_column_double(statement, 4);
+            item.status = sqlite3_column_int(statement, 5);
+            item.orderIdCard = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(statement, 6)];
+            item.saledStaffId = sqlite3_column_int64(statement, 7);
+            
+            [array addObject:item];
+        }
+        sqlite3_finalize(statement);
+        sqlite3_close(db);
+        return array;
+    }
+    sqlite3_finalize(statement);
+    sqlite3_close(db);
+    return nil;
+}
+
 - (int)getSaledHousesCountByStaffId:(int64_t)staffId {
     if (sqlite3_open([self.dbFilePath UTF8String], &db) != SQLITE_OK) {
         NSLog(@"数据库打开失败");
@@ -391,7 +426,7 @@ static HouseManager *_sharedHouseManager;
     sqlite3_stmt *statement;
     // 对sql预处理
     if (sqlite3_prepare_v2(db, select_saled_house_count_sql, -1, &statement, NULL) == SQLITE_OK) {
-        sqlite3_bind_int64(statement, 1, staffId); // 员工工号
+        sqlite3_bind_int64(statement, 1, staffId); // 销售员工工号
         // 执行sql
         if (sqlite3_step(statement) == SQLITE_ROW) {
             int count = sqlite3_column_int(statement, 0);
@@ -408,7 +443,7 @@ static HouseManager *_sharedHouseManager;
     return 0;
 }
 
-- (Float64)getSalesCommissionByStaffId:(int64_t)staffId {
+- (Float64)getTotalSalesCommissionByStaffId:(int64_t)staffId {
     if (sqlite3_open([self.dbFilePath UTF8String], &db) != SQLITE_OK) {
         NSLog(@"数据库打开失败");
         return 0;
@@ -418,7 +453,7 @@ static HouseManager *_sharedHouseManager;
     sqlite3_stmt *statement;
     // 对sql预处理
     if (sqlite3_prepare_v2(db, select_saled_house_count_sql, -1, &statement, NULL) == SQLITE_OK) {
-        sqlite3_bind_int64(statement, 1, staffId); // 员工工号
+        sqlite3_bind_int64(statement, 1, staffId); // 销售员工工号
         // 执行sql
         Float64 commission = 0.0;
         while (sqlite3_step(statement) == SQLITE_ROW) {
